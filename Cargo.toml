@@ -1,0 +1,30 @@
+[package]
+name = "rust_dlna_server"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.100"
+axum = { version = "0.8.8", features = ["macros"] }
+chrono = "0.4.43"
+clap = { version = "4.5.54", features = ["derive"] }
+local-ip-address = "0.6.9"
+md5 = "0.8.0"
+notify = "8.2.0"
+notify-debouncer-full = "0.6.0"
+quick-xml = "0.39.0"
+regex = "1.12.2"
+reqwest = { version = "0.12.12", default-features = false, features = ["rustls-tls"] }
+roxmltree = "0.20.0"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
+socket2 = "0.6.1"
+tokio = { version = "1.49.0", features = ["full"] }
+tokio-util = { version = "0.7.18", features = ["io"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.22", features = ["env-filter", "fmt"] }
+uuid = { version = "1.19.0", features = ["v4", "serde"] }
+tower-http = { version = "0.6.2", features = ["fs", "trace"] }
+tower = { version = "0.5.2", features = ["util"] }
+tracing-appender = "0.2"
+flate2 = "1.0"
