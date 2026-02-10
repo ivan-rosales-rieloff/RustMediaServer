@@ -175,19 +175,6 @@ DLNA.ORG_CI=1                 # Conversion indicator (1=transcoded)
 DLNA.ORG_FLAGS=01700000...    # Feature flags
 ```
 
-### Transcoding (`transcoding/transcoder.rs`)
-
-FFmpeg command for incompatible formats:
-```
-ffmpeg -i <input> \
-  -c:v libx264 -preset ultrafast -tune zerolatency \
-  -c:a aac -b:a 192k \
-  -pix_fmt yuv420p \
-  -f mpegts \
-  -maxrate 50M -bufsize 100M \
-  -
-```
-
 ### Renderer Detection
 
 1. **User-Agent matching** - Regex patterns from `.conf` files
@@ -204,8 +191,8 @@ ffmpeg -i <input> \
 ### Installation
 
 ```bash
-git clone https://github.com/your-repo/rust-dlna-server
-cd rust-dlna-server
+git clone https://github.com/ivan-rosales-rieloff/RustMediaServer.git
+cd RustMediaServer
 cargo build --release
 ```
 
@@ -215,11 +202,9 @@ cargo build --release
 # Default: serves ./media on port 3000
 cargo run --release
 
-# Custom directory and port
-cargo run --release -- --content-dir /path/to/media --port 8080
-
 # With debug logging
-RUST_LOG=debug cargo run --release
+cargo run --release -- -log-level=debug
+
 ```
 
 ### Command Line Options
@@ -228,8 +213,7 @@ RUST_LOG=debug cargo run --release
 rust_dlna_server [OPTIONS]
 
 Options:
-  -c, --content-dir <PATH>   Directory containing media files [default: media]
-  -p, --port <PORT>          HTTP port to listen on [default: 3000]
+  -l, --log-level <LEVEL>    Log level (error, warn, info, debug, trace) [default: info]
   -h, --help                 Print help
   -V, --version              Print version
 ```
